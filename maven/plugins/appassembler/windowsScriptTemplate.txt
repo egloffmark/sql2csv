@@ -1,0 +1,15 @@
+@echo off
+#ENV_SETUP#
+set ERROR_CODE=0
+SET BASEDIR=.
+SET REPO=%BASEDIR%\#REPO#
+SET CP=#CLASSPATH#
+set CMD_LINE_ARGS=%*
+echo starting #APP_NAME#
+#JAVA_BINARY# -cp %CP% #EXTRA_JVM_ARGUMENTS# #MAINCLASS# #APP_ARGUMENTS# %CMD_LINE_ARGS%
+pause
+if %ERRORLEVEL% NEQ 0 goto error
+goto end
+:error
+exit /B %ERRORLEVEL%
+:end

@@ -1,0 +1,15 @@
+SET MODE MYSQL; 
+
+DROP TABLE IF EXISTS currency;
+
+CREATE TABLE currency (
+	id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	code VARCHAR(3) NOT NULL,
+	name VARCHAR(255) NOT NULL,
+	last_modification TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	PRIMARY KEY (id),
+	UNIQUE INDEX currency_code (code)
+);
+
+INSERT INTO currency set code='CHF', name='Swiss Franc';
+INSERT INTO currency set code='USD', name='US Dollar';

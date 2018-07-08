@@ -11,7 +11,17 @@ sql2csv  -url jdbc:mysql://localhost:3306/currencies -user root -query "select *
 
 ## Installation & Configuration
 
-The deployment package can be built with maven and it will create automatically shell scripts .sh / .bat files for you   
+The deployment package can be built with maven and it will create automatically shell scripts .sh / .bat files for you. The following commands generates in the `target/sql2csv` folder a runnable tool with the shellscripts for linux and windows platforms. 
+```
+export JAVA_HOME=/opt/java/jdk1.8.0_152
+cd sql2csv
+mvn clean package
+```
+To run it
+```
+cd target\sql2csv
+sql2csv -version
+```
 
 ## FAQ 
 ### Can I re-use your classes  within my java applicaiton? If yes how? 

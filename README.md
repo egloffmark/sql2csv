@@ -11,4 +11,7 @@ sql2csv  -url jdbc:mysql://localhost:3306/currencies -user root -query "select *
 
 ## Installation & Configuration
 
+The deployment package can be built with maven and it will create automatically shell scripts .sh / .bat files for you   
+
 ## FAQ 
+### Can I re-use your classes  within my java applicaiton? If yes how?

@@ -11,4 +11,4 @@ sql2csv  -url jdbc:mysql://localhost:3306/currencies -user root -query "select *
 
 ## Installation & Configuration
 
-## FAQ
+## FAQ 

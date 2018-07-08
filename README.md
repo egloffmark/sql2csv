@@ -26,7 +26,7 @@ mvn clean package
 To run it
 ```
 cd target\sql2csv
-sql2csv -version
+sql2csv
 ```
 
 ## FAQ 

@@ -106,7 +106,7 @@
 					</platforms>
 					<programs>
 						<program>
-							<mainClass>com.ontius.jdbc.SQLToCSVMain</mainClass>
+							<mainClass>com.ontius.jdbc.SQL2CSVMain</mainClass>
 							<name>sql2csv</name>
 						</program>
 					</programs>

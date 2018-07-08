@@ -6,27 +6,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/oracle/ojdbc6 -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>oracle</groupId> -->
-<!-- 			<artifactId>ojdbc6</artifactId> -->
-<!-- 			<version>11.2.0.4.0</version> -->
-<!-- 		</dependency> -->
-
-		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>mysql</groupId> -->
-<!-- 			<artifactId>mysql-connector-java</artifactId> -->
-<!-- 			<version>5.1.46</version> -->
-<!-- 		</dependency> -->
-
-		<!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.microsoft.sqlserver</groupId> -->
-<!-- 			<artifactId>mssql-jdbc</artifactId> -->
-<!-- 			<version>6.4.0.jre8</version> -->
-<!-- 		</dependency> -->
-
 		<!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
 		<dependency>
 			<groupId>com.opencsv</groupId>
@@ -114,7 +93,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<assembleDirectory>${project.basedir}/target/sql-to-csv</assembleDirectory>
+					<assembleDirectory>${project.basedir}/target/sql2csv</assembleDirectory>
 					<repositoryName>lib</repositoryName>
 					<repositoryLayout>flat</repositoryLayout>
 					<binFolder>.</binFolder>
@@ -128,7 +107,7 @@
 					<programs>
 						<program>
 							<mainClass>com.ontius.jdbc.SQLToCSVMain</mainClass>
-							<name>SqlToCSVMain</name>
+							<name>sql2csv</name>
 						</program>
 					</programs>
 				</configuration>
@@ -139,7 +118,7 @@
 				<version>2.6</version>
 				<configuration>
 					<descriptor>maven/plugins/assembly/zip.xml</descriptor>
-					<finalName>sqlToCsv</finalName>
+					<finalName>sql2csv</finalName>
 					<appendAssemblyId>false</appendAssemblyId>
 					<archiveBaseDirectory>${project.build.directory}</archiveBaseDirectory>
 					<outputDirectory>${project.build.directory}</outputDirectory>

@@ -15,3 +15,14 @@ The deployment package can be built with maven and it will create automatically 
 
 ## FAQ 
 ### Can I re-use your classes  within my java applicaiton? If yes how? 
+
+### Which libraries is this tool using? 
+The following libraries / open source projects are used
+* apache commons beanutils
+* apache commons cli
+* apache commons collections
+* apache commons lang
+* apache commons logging
+* apache commons text
+* apache log4j
+* opencvs

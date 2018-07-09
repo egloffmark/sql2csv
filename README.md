@@ -1,14 +1,14 @@
 # sql2cvs
-Java Tool to dump via simple SQL query the result to CSV. It can be sued fro large tables with millions of entries. 
+Java Tool to dump the result of SQL queries to CSV. It can be used also for large queries with millions of result rows. 
 
 ## Examples
-This tool can be used via command line as follows
+This tool can be used via command line as follows:
 
 ### Example 1 - dump a simple table via command line by using JDBC auto driver detection
 
-As a prerequisite please make sure that your JDBC driver jar has been copied to the current working directory
+Remark: As a prerequisite please make sure that your JDBC driver jar has been copied to the current working directory
 ```
-sql2csv  -url jdbc:mysql://localhost:3306/currencies -user root -query "select * from currency" -output currencies.csv
+sql2csv  -url jdbc:mysql://localhost:3306/currencies -user root -password xxx -query "select * from currency" -output currencies.csv
 ```
 This would produce for example the following output
 ```
@@ -92,6 +92,9 @@ Yes you can, see example 3
 
 ### Can I execute multiple queries and save them as single output appended?
 Well for this you need to use union queries and build the query as single line
+
+### Can I enter the password at runtime so that nobody sees it the console?
+Yes you can, simple replace the property `-password xxx` by using `-enterPassword` (no value for that property needed)
 
 ### Can I re-use your classes within my java application? If yes how? 
 Yes you can! Simple use the class `SQL2CSV`as follows or have a look at the Junit Test `SQL2CSVTest`for a running example.

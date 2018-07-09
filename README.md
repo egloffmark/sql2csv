@@ -85,7 +85,7 @@ cd target/sql2csv
 Just copy it where you like to have. The only pre-requisite before you execute is that you make sure that you copy the JDBC driver jar(s) into the current working directory
 
 ### Configuration
-The minimum configuration is to pass the `-url` for the JDBC string. Don't forget user and password parameters. Please have a look at the examples above for more information and read also the FAQ.
+The minimum configuration is to pass the `-url` for the JDBC string and the query and user name via command line properties or via property file. Don't forget user and password parameters. Please have a look at the examples above for more information and read also the FAQ.
 
 ## FAQ 
 ### Can I omit the column headers? If yes how?

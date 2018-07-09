@@ -16,6 +16,7 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
 
 import lombok.AccessLevel;
 import lombok.Setter;
@@ -26,7 +27,7 @@ public class CommandLineHelper {
 	private Options options = new Options();
 	private CommandLine cmdLine;
 	
-	public void parseCmdLine(String[] args) throws Exception {
+	public void parseCmdLine(String[] args) throws ParseException {
 		if (!options.hasOption("help")) {
 			options.addOption("help","prints help description");
 		}

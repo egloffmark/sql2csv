@@ -96,8 +96,11 @@ Yes you can, see example 3
 ### Can I execute multiple queries and save them as single output appended?
 Well for this you need to use union queries and build the query as single line
 
-### Can I enter the password at runtime so that nobody sees it the console?
+### Can I enter the password at runtime so that nobody sees it in the console?
 Yes you can, simple replace the property `-password xxx` by using `-enterPassword` (no value for that property needed)
+
+### Can I change the date and timestamp format settings?
+Yes you can! Simple pass the parameter `-dateFormat dd/MM/yyyy` or `-dateTimeFormat dd/MM/yyyy HH:mm:ss` with the format according to the SimpleDateFormat pattern from JVM. The patterns "dd/MM/YYYY" and "dd/MM/YYYY HH:mm:ss" are the default ones.
 
 ### Can I reuse your classes within my java application? If yes how? 
 Yes you can! Simple use the class `SQL2CSV`as follows or have a look at the Junit Test `SQL2CSVTest`for a running example.

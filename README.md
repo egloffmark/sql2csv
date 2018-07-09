@@ -22,7 +22,7 @@ The tool automatically tries to locate the JDBC driver ja in the current working
 
 ### Example 2 - dump a simple table via command line by passing JDBC driver details
 ```
-sql2csv -driverDir c:\jdbcLibs -driver com.mysql.jdbc.Driver -url jdbc:mysql://localhost:3306/currencies -user root -query "select * from currency" -output currencies.csv
+sql2csv -driverDir c:\jdbcLibs -driver com.mysql.jdbc.Driver -url jdbc:mysql://localhost:3306/currencies -user root -password xxx -query "select * from currency" -output currencies.csv
 ```
 
 ### Example 3 - dump a mutliple tables via command line by using a property file
@@ -44,8 +44,8 @@ driver=com.mysql.jdbc.Driver
 url=jdbc:mysql://localhost:3306/currencies
 user=root
 
-currencies1.csv=select * from currencies order by id asc
-currencies2.csv=select * from currencies order by id desc
+currencies1.csv=select * from currency order by id asc
+currencies2.csv=select * from currency order by id desc
 
 ```
 

@@ -51,7 +51,26 @@ currencies1.csv=select * from currency order by id asc
 currencies2.csv=select * from currency order by id desc
 
 ```
+## Command Line Reference
+```
+ -dateFormat <arg>       date format to be used, according SimpleDateFormat
+ -dateTimeFormat <arg>   date time format to be used, according SimpleDateFormat
+ -driver <arg>           JDBC driver class to be used
+ -driverDir <arg>        directory path to lookup for JDBC driver jars
+ -enterPassword          enter the password via console
+ -header <arg>           column names as header row (default yes)
+ -help                   prints this help description
+ -output <arg>           path to output file
+ -password <arg>         password for login
+ -propertyFile <arg>     path to property file
+ -query <arg>            sql query to be executed
+ -quotes <arg>           apply quotes (default yes)
+ -sql <arg>              sql query to be executed
+ -trim <arg>             trim values (default false
+ -url <arg>              JDBC URL to be used (mandatory)
+ -user <arg>             user name for login
 
+```
 ## Build, Installation & Configuration
 
 ### Building from source 

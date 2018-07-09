@@ -8,6 +8,8 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Properties;
 
+import org.apache.commons.cli.ParseException;
+
 import com.ontius.common.util.cli.CommandLineHelper;
 import com.ontius.jdbc.SQL2CSVPropertyExtended.Property;
 
@@ -79,7 +81,10 @@ public class SQL2CSVMain {
 			
 			log.info("finished!");
 			
-		} catch(Exception ex) {
+		} catch(ParseException ex) {
+			log.error("error " + ex.getMessage() + ". Please use -help for a reference about the command line syntax.");
+		} 
+		catch(Exception ex) {
 			log.error("error has happened!", ex);
 		}
 	}

@@ -107,7 +107,7 @@ Yes you can! Simple use the class `SQL2CSV`as follows or have a look at the Juni
 
 ```
 Class.forName ("org.h2.Driver");  // your JDB driver
-Connection con = DriverManager.getConnection ("jdbc:h2:mem:test", "sa","sa");  // your JBS connection string with user and password
+Connection con = DriverManager.getConnection ("jdbc:h2:mem:test", "sa","sa");  // your JDBC connection string with user and password
 StringWriter sw = new StringWriter();
 
 SQL2CSV sqlToCsv = new SQL2CSV();
@@ -117,7 +117,7 @@ con.close();
 System.out.print(sw);
 
 ```
-### Do you have somewhere the xample "currencies" schema with example data to test?
+### Do you have somewhere the example "currencies" schema with example data to test?
 Yes please have a look at the `src/test/resources/schema.sql`and the running JUnit example `SQL2CSVTest` which uses a H2 in-memory DB.
 
 ### Which libraries is this tool using? 

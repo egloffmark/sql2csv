@@ -99,7 +99,7 @@ Well for this you need to use union queries and build the query as single line
 ### Can I enter the password at runtime so that nobody sees it the console?
 Yes you can, simple replace the property `-password xxx` by using `-enterPassword` (no value for that property needed)
 
-### Can I re-use your classes within my java application? If yes how? 
+### Can I reuse your classes within my java application? If yes how? 
 Yes you can! Simple use the class `SQL2CSV`as follows or have a look at the Junit Test `SQL2CSVTest`for a running example.
 
 ```

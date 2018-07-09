@@ -94,7 +94,7 @@ Yes you can, see example 3
 Well for this you need to use union queries and build the query as single line
 
 ### Can I re-use your classes within my java application? If yes how? 
-Yes you can! Simple use the class `SQL2CSV`as follows or have a look at the Junit Test ` SQL2CSVTest`for a running example.
+Yes you can! Simple use the class `SQL2CSV`as follows or have a look at the Junit Test `SQL2CSVTest`for a running example.
 
 ```
 Class.forName ("org.h2.Driver");  // your JDB driver
@@ -108,6 +108,8 @@ con.close();
 System.out.print(sw);
 
 ```
+### Do you have somewhere the xample "currencies" schema with example data to test?
+Yes please have a look at the `src/test/resources/schema.sql`and the running JUnit example `SQL2CSVTest` which uses a H2 in-memory DB.
 
 ### Which libraries is this tool using? 
 The following libraries / open source projects are used

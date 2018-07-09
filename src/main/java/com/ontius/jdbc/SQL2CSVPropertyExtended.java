@@ -32,7 +32,14 @@ public class SQL2CSVPropertyExtended extends SQL2CSV {
 		    String url = properties.getProperty(Property.JDBC_URL.getName());
 		    String user = properties.getProperty(Property.USER.getName());
 		    String password = properties.getProperty(Property.PASSWORD.getName());
-		    String sql = properties.getProperty(Property.SQL.getName());
+		    
+		    String sql = "";
+		    if (properties.containsKey(Property.SQL.getName())) {
+		    	sql = properties.getProperty(Property.SQL.getName());
+		    }
+		    if (properties.containsKey(Property.QUERY.getName())) {
+		    	sql = properties.getProperty(Property.QUERY.getName());
+		    }
 		    String output = properties.getProperty(Property.OUTPUT.getName(),"output.csv");
 		    boolean header = "yes".equals(properties.getProperty(Property.HEADER.getName(),"yes").toLowerCase()) || Boolean.valueOf(properties.getProperty(Property.HEADER.getName(),"true").toLowerCase());
 		    boolean trim = "yes".equals(properties.getProperty(Property.TRIM.getName(),"yes").toLowerCase()) || Boolean.valueOf(properties.getProperty(Property.TRIM.getName(),"true").toLowerCase());
@@ -82,6 +89,7 @@ public class SQL2CSVPropertyExtended extends SQL2CSV {
 		DRIVER_CLASS("driver", "JDBC driver class to be used"),
 		DRIVER_DIR("driverDir","directory path for JDBC driver jars"),
 		SQL("sql","sql query to be executed"),
+		QUERY("query","sql query to be executed"),
 		DATE_FORMAT("dateFormat","date format to be used"),
 		DATE_TIME_FORMAT("dateTimeFormat","date time format to be used"),
 		USER("user", "user name for login"),

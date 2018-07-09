@@ -16,9 +16,9 @@ This would produce for example the following output
 "1","CHF","Swiss Franc","08/07/2018 23:10:46"
 "2","USD","US Dollar","08/07/2018 23:10:46"
 ```
-The tool automatically tries to locate the JDBC driver ja in the current working directory and uses  automatic JDBC driver detection. If it fails then you should:
-* specify with the command line property `driverDir`the location of the JDBC driver jars
-* specify with the command line property `driver`the full name of your JDBC driver class
+The tool automatically tries to locate the JDBC driver jar in the current working directory and uses automatic JDBC driver detection. If it fails to find a suitable driver then you should:
+* specify with the command line property `-driverDir`the location of the JDBC driver jars, this is the path to the directory which contains the jars
+* specify with the command line property `-driver`the full name of your JDBC driver class i.e. com.mysql.jdbc.Driver
 
 ### Example 2 - dump a simple table via command line by passing JDBC driver details
 ```

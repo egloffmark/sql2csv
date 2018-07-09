@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ontius</groupId>
 	<artifactId>sql2csv</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1-SNAPSHOT</version>
 
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->

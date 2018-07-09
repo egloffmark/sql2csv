@@ -18,6 +18,8 @@ public class SQL2CSVMain {
 
 	private static CommandLineHelper cmdLineHelper = new CommandLineHelper();
 	private static final String PROP_FILE = "propertyFile";
+	private static final String PROP_HELP = "help";
+
 	private static final String PROP_ENTER_PASSWORD = "enterPassword";
 
 	public static void main(String[] args) {
@@ -33,6 +35,11 @@ public class SQL2CSVMain {
 			cmdLineHelper.addCmdLineOption(PROP_ENTER_PASSWORD, false, "enter the password via console");
 	
 			cmdLineHelper.parseCmdLine(args);
+			
+			if (cmdLineHelper.hasOption(PROP_HELP)) {
+				cmdLineHelper.printUsageDescription("SQL2CSV", "(c) by Ontius (www.ontius.com)", "");
+				System.exit(0);
+			}
 			
 			Properties properties = new Properties();
 			

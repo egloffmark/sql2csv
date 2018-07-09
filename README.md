@@ -72,7 +72,7 @@ The minimum configuration is to pass the `-url` for the JDBC string. Don't forge
 ### Can I omit the column headers? If yes how?
 Yes you can! Simple pass the property `-header no`
 
-### Can I deactivate the field doulbe quote encoding ""?
+### Can I deactivate the field double quote encoding ""?
 Yes you can! Simple pass the property `-quotes no`
 
 ### Can the values be trimmed?

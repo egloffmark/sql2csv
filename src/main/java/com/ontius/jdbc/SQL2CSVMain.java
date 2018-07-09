@@ -37,7 +37,7 @@ public class SQL2CSVMain {
 			cmdLineHelper.parseCmdLine(args);
 			
 			if (cmdLineHelper.hasOption(PROP_HELP)) {
-				cmdLineHelper.printUsageDescription("SQL2CSV", "(c) by Ontius (www.ontius.com)", "");
+				cmdLineHelper.printUsageDescription("SQL2CSV - (c) by Ontius (www.ontius.com)", "", "");
 				System.exit(0);
 			}
 			

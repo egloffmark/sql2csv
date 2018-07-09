@@ -81,7 +81,7 @@ Yes you can! Simple pass the property `-trim yes`
 ### Can I specify another delimiter?
 No this feature has not been foreseen, comma is currently hardcoded
 
-### Can I sue that to dump large tables with over 100'000 entries or even more?
+### Can I use that to dump large tables with over 100'000 entries or even more?
 Yes you can!  I programmed it exactyl for such a purpose. The tool is using streams and iterates through the resultset and does not store them in the memory. So memory consumption is quite small.
 
 ### Can I mix command line and property file? what is the order?

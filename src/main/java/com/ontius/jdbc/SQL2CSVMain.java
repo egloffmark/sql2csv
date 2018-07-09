@@ -9,7 +9,7 @@ import java.net.URLClassLoader;
 import java.util.Properties;
 
 import com.ontius.common.util.cli.CommandLineHelper;
-import com.ontius.jdbc.SQL2CSV.Property;
+import com.ontius.jdbc.SQL2CSVPropertyExtended.Property;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -26,7 +26,7 @@ public class SQL2CSVMain {
 		
 		try {
 		
-			for(SQL2CSV.Property prop : SQL2CSV.Property.values()) {
+			for(Property prop : Property.values()) {
 				cmdLineHelper.addCmdLineOption(prop.getName(), true, prop.getDescription());
 			}
 			cmdLineHelper.addCmdLineOption(PROP_FILE, true, "path to property file");
@@ -40,13 +40,13 @@ public class SQL2CSVMain {
 				properties.load(new FileReader(new File(cmdLineHelper.getValue(PROP_FILE))));
 			}
 	
-			for(SQL2CSV.Property prop : SQL2CSV.Property.values()) {
+			for(Property prop : Property.values()) {
 				if (cmdLineHelper.hasOption(prop.getName())) {
 					properties.put(prop.getName(), cmdLineHelper.getValue(prop.getName()));
 				}
 			}
 	
-			for(SQL2CSV.Property prop : SQL2CSV.Property.values()) {
+			for(Property prop : Property.values()) {
 				if (System.getProperties().containsKey(prop.getName())) {
 					properties.put(prop.getName(), System.getProperties().get(prop.getName()));
 				}
@@ -56,7 +56,7 @@ public class SQL2CSVMain {
 			if (properties.containsKey(Property.DRIVER_DIR.getName())) {
 				driverDir = properties.getProperty(Property.DRIVER_DIR.getName());
 			}
-			File[] jars = readDriverJars(driverDir);
+			File[] jars = readJarFiles(driverDir);
 			for (File jar : jars) {
 				addLibraryToClassPath(jar);
 			}
@@ -64,10 +64,10 @@ public class SQL2CSVMain {
 			
 			if(cmdLineHelper.hasOption(PROP_ENTER_PASSWORD)) {
 				String password = cmdLineHelper.readPassword("enter password:");
-				properties.put(SQL2CSV.Property.PASSWORD.getName(), password);
+				properties.put(Property.PASSWORD.getName(), password);
 			}
 			
-			SQL2CSV sqlToCsv = new SQL2CSV();
+			SQL2CSVPropertyExtended sqlToCsv = new SQL2CSVPropertyExtended();
 			sqlToCsv.writeCSV(properties);
 			
 			log.info("finished!");
@@ -77,7 +77,7 @@ public class SQL2CSVMain {
 		}
 	}
 
-	private static File[] readDriverJars(String directoryPath) throws Exception {
+	private static File[] readJarFiles(String directoryPath) throws Exception {
 		File dir = new File(directoryPath);
 		File[] jars = dir.listFiles(new FilenameFilter() {
 

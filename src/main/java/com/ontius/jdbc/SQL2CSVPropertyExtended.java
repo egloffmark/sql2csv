@@ -48,8 +48,8 @@ public class SQL2CSVPropertyExtended extends SQL2CSV {
 		    boolean quotes = "yes".equals(properties.getProperty(Property.QUOTES.getName(),"yes").toLowerCase()) || Boolean.valueOf(properties.getProperty(Property.QUOTES.getName(),"true").toLowerCase());
 		    String dateFormat = properties.getProperty(Property.DATE_FORMAT.getName(),DEFAULT_DATE_FORMAT);
 		    String dateTimeFormat = properties.getProperty(Property.DATE_TIME_FORMAT.getName(),DEFAULT_DATE_TIME_FORMAT);
-			char seperatorchar = properties.getProperty(Property.DATE_TIME_FORMAT.getName(),String.valueOf(ICSVWriter.DEFAULT_SEPARATOR)).charAt(0);
-			char quotechar = properties.getProperty(Property.DATE_TIME_FORMAT.getName(),String.valueOf(ICSVWriter.DEFAULT_QUOTE_CHARACTER)).charAt(0);
+			char seperatorchar = properties.getProperty(Property.SEPERATOR.getName(),String.valueOf(ICSVWriter.DEFAULT_SEPARATOR)).charAt(0);
+			char quotechar = properties.getProperty(Property.QUOTE_CHAR.getName(),String.valueOf(ICSVWriter.DEFAULT_QUOTE_CHARACTER)).charAt(0);
 		   
 			log.info("open connection...");
 			if(user != null && !user.isEmpty()) {

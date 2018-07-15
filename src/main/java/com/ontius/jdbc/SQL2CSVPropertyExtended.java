@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.Properties;
 import java.util.TreeSet;
 
+import com.opencsv.ICSVWriter;
+
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 
@@ -46,6 +48,8 @@ public class SQL2CSVPropertyExtended extends SQL2CSV {
 		    boolean quotes = "yes".equals(properties.getProperty(Property.QUOTES.getName(),"yes").toLowerCase()) || Boolean.valueOf(properties.getProperty(Property.QUOTES.getName(),"true").toLowerCase());
 		    String dateFormat = properties.getProperty(Property.DATE_FORMAT.getName(),DEFAULT_DATE_FORMAT);
 		    String dateTimeFormat = properties.getProperty(Property.DATE_TIME_FORMAT.getName(),DEFAULT_DATE_TIME_FORMAT);
+			char seperatorchar = properties.getProperty(Property.DATE_TIME_FORMAT.getName(),String.valueOf(ICSVWriter.DEFAULT_SEPARATOR)).charAt(0);
+			char quotechar = properties.getProperty(Property.DATE_TIME_FORMAT.getName(),String.valueOf(ICSVWriter.DEFAULT_QUOTE_CHARACTER)).charAt(0);
 		   
 			log.info("open connection...");
 			if(user != null && !user.isEmpty()) {
@@ -57,7 +61,7 @@ public class SQL2CSVPropertyExtended extends SQL2CSV {
 			if (sql != null && !sql.isEmpty()) {
 				FileWriter writer = new FileWriter(new File(output));
 				log.info("start csv dump to {}...",output);
-				writeCSV(connection, sql, writer, header, trim, quotes, dateFormat, dateTimeFormat);
+				writeCSV(connection, sql, writer, header, trim, quotes, dateFormat, dateTimeFormat, seperatorchar, quotechar);
 			}
 			for(Property prop : Property.values()) {
 					properties.remove(prop.getName());
@@ -68,7 +72,7 @@ public class SQL2CSVPropertyExtended extends SQL2CSV {
 					String out = key.toString();
 					FileWriter writer = new FileWriter(new File(out));
 					log.info("start csv dump to {}...",out);
-					writeCSV(connection, query, writer, header, trim, quotes, dateFormat, dateTimeFormat);
+					writeCSV(connection, query, writer, header, trim, quotes, dateFormat, dateTimeFormat, seperatorchar, quotechar);
 				}
 			}
 		}
@@ -97,7 +101,9 @@ public class SQL2CSVPropertyExtended extends SQL2CSV {
 		OUTPUT("output","path to output file"),
 		HEADER("header","column names as header row (default yes)"),
 		TRIM("trim", "trim values (default false"),
-		QUOTES("quotes","apply quotes (default yes)")
+		QUOTES("quotes","apply quotes (default yes)"),
+		SEPERATOR("seperator","char for the field separation, by default a comma"),
+		QUOTE_CHAR("quotechar", "char used for escaping values, by default a double quote")
 		;
 		
 		  @Getter

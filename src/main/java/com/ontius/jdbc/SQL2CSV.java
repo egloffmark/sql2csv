@@ -8,34 +8,79 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.opencsv.CSVWriter;
+import com.opencsv.ICSVWriter;
 import com.opencsv.ResultSetHelperService;
 
+import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public class SQL2CSV {
 	
-	static final String DEFAULT_DATE_TIME_FORMAT = "dd/MM/YYYY HH:mm:ss";
 	static final String DEFAULT_DATE_FORMAT = "dd/MM/YYYY";
+	static final String DEFAULT_DATE_TIME_FORMAT = "dd/MM/YYYY HH:mm:ss";
+	
+	@Setter
+	private String dateFormat = DEFAULT_DATE_FORMAT;
+	
+	@Setter
+	private String dateTimeFormat = DEFAULT_DATE_TIME_FORMAT;
+
+	@Setter
+	private  boolean header = true; 
+	
+	@Setter
+	private	boolean trim = false;
+	
+	@Setter
+	private	boolean applyQuotes = true;
+	
+	@Setter
+	private	char seperatorchar = ICSVWriter.DEFAULT_SEPARATOR;
+	
+	@Setter
+	private	char quotechar = ICSVWriter.DEFAULT_QUOTE_CHARACTER;
+	
+	@Setter
+	private	char escapechar = ICSVWriter.NO_ESCAPE_CHARACTER; 
+	
+	@Setter
+	private	String lineSepaerator = System.getProperty("line.separator"); 
 	
 	
 	public void writeCSV(Connection connection, String sql, Writer writer) throws Exception {
-		writeCSV(connection,sql,writer,true,false,true,DEFAULT_DATE_FORMAT,DEFAULT_DATE_TIME_FORMAT);
+		writeCSV(connection, sql, writer, header, trim, applyQuotes, dateFormat, dateTimeFormat, seperatorchar, quotechar , escapechar, lineSepaerator);
 	}
 
 	public void writeCSV(Connection connection, String sql, Writer writer, boolean header) throws Exception {
-		writeCSV(connection,sql,writer,header,false,true,DEFAULT_DATE_FORMAT,DEFAULT_DATE_TIME_FORMAT);
+		writeCSV(connection,sql,writer,header, trim, applyQuotes, dateFormat, dateTimeFormat, seperatorchar, quotechar, escapechar, lineSepaerator);
 	}
 	
 	public void writeCSV(Connection connection, String sql, Writer writer, boolean header, boolean trim) throws Exception {
-		writeCSV(connection,sql,writer,header,trim,true,DEFAULT_DATE_FORMAT,DEFAULT_DATE_TIME_FORMAT);
+		writeCSV(connection,sql,writer,header,trim, applyQuotes, dateFormat, dateTimeFormat, seperatorchar, quotechar, escapechar, lineSepaerator);
 	}
 
 	public void writeCSV(Connection connection, String sql, Writer writer, boolean header, boolean trim, boolean applyQuotes) throws Exception {
-		writeCSV(connection,sql,writer,header,trim,applyQuotes,DEFAULT_DATE_FORMAT,DEFAULT_DATE_TIME_FORMAT);
+		writeCSV(connection,sql,writer,header,trim,applyQuotes, dateFormat, dateTimeFormat, seperatorchar, quotechar, escapechar, lineSepaerator);
+	}
+
+	public void writeCSV(Connection connection, String sql, Writer writer, boolean header, boolean trim, boolean applyQuotes, String dateFormat, String dateTimeFormat) throws Exception {
+		writeCSV(connection,sql,writer,header,trim,applyQuotes, dateFormat, dateTimeFormat, seperatorchar, quotechar, escapechar, lineSepaerator);
 	}
 	
-	public void writeCSV(Connection connection, String sql, Writer writer, boolean header, boolean trim, boolean applyQuotes, String dateFormat, String dateTimeFormat) throws Exception {
+	public void writeCSV(Connection connection, String sql, Writer writer, boolean header, boolean trim, boolean applyQuotes, String dateFormat, String dateTimeFormat, char seperatorchar) throws Exception {
+		writeCSV(connection,sql,writer,header,trim,applyQuotes, dateFormat, dateTimeFormat, seperatorchar, quotechar, escapechar, lineSepaerator);
+	}
+	
+	public void writeCSV(Connection connection, String sql, Writer writer, boolean header, boolean trim, boolean applyQuotes, String dateFormat, String dateTimeFormat, char seperatorchar, char quotechar) throws Exception {
+		writeCSV(connection,sql,writer,header,trim,applyQuotes, dateFormat, dateTimeFormat, seperatorchar, quotechar, escapechar, lineSepaerator);
+	}
+	
+	public void writeCSV(Connection connection, String sql, Writer writer, boolean header, boolean trim, boolean applyQuotes, String dateFormat, String dateTimeFormat, char seperatorchar, char quotechar, char escapechar) throws Exception {
+		writeCSV(connection,sql,writer,header,trim,applyQuotes, dateFormat, dateTimeFormat, seperatorchar, quotechar, escapechar, lineSepaerator);
+	}
+	
+	public void writeCSV(Connection connection, String sql, Writer writer, boolean header, boolean trim, boolean applyQuotes, String dateFormat, String dateTimeFormat, char seperatorchar, char quotechar, char escapechar, String lineSepaerator) throws Exception {
 		
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -50,7 +95,7 @@ public class SQL2CSV {
 		    stmt = connection.createStatement();
 			log.info("executing query '{}'",sql);
 		    rs = stmt.executeQuery(sql);
-		    csvw = new CSVWriter(writer);
+		    csvw = new CSVWriter(writer,seperatorchar,quotechar,escapechar,lineSepaerator);
 			csvw.setResultService(resultSetHelperService);
 			log.info("writing output...");
 		    int linesWritten = csvw.writeAll(rs, header, trim, applyQuotes);

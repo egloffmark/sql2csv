@@ -18,7 +18,6 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class SQL2CSVMain {
 
-	private static CommandLineHelper cmdLineHelper = new CommandLineHelper();
 	private static final String PROP_FILE = "propertyFile";
 	private static final String PROP_HELP = "help";
 
@@ -26,10 +25,9 @@ public class SQL2CSVMain {
 
 	public static void main(String[] args) {
 		
-		log.info("start...");
-		
 		try {
 		
+			CommandLineHelper cmdLineHelper = new CommandLineHelper();
 			for(Property prop : Property.values()) {
 				cmdLineHelper.addCmdLineOption(prop.getName(), true, prop.getDescription());
 			}

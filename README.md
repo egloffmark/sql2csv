@@ -34,7 +34,7 @@ You can pass the command line properties via property file. The property file al
 
 `<outputpath> = <sql query>`
 
-An example would look like this: 
+An example would look like this:
 
 ```
 sql2csv -propertyFile conf.properties

@@ -24,8 +24,12 @@ The tool automatically tries to locate the JDBC driver jar in the current workin
 ```
 sql2csv -driverDir c:\jdbcLibs -driver com.mysql.jdbc.Driver -url jdbc:mysql://localhost:3306/currencies -user root -password xxx -query "select * from currency" -output currencies.csv
 ```
+### Example 3 - dump a simple table via command line by passing seperator and quote char
+```
+sql2csv -url jdbc:mysql://localhost:3306/currencies -user root -password xxx -query "select * from currency" -output currencies.csv -seperator ";" -quotechar "'"  
+```
 
-### Example 3 - dump a mutliple tables via command line by using a property file
+### Example 4 - dump a mutliple tables via command line by using a property file
 You can pass the command line properties via property file. The property file allows you to specify mutliple queries for the same connection by using the pattern
 
 `<outputpath> = <sql query>`
@@ -50,21 +54,24 @@ currencies2.csv=select * from currency order by id desc
 ```
 ## Command Line Reference
 ```
- -dateFormat <arg>       date format to be used, according SimpleDateFormat
- -dateTimeFormat <arg>   date time format to be used, according SimpleDateFormat
+usage: SQL2CSV [OPTIONS]
+ -dateFormat <arg>       date format to be used
+ -dateTimeFormat <arg>   date time format to be used
  -driver <arg>           JDBC driver class to be used
- -driverDir <arg>        directory path to lookup for JDBC driver jars
+ -driverDir <arg>        directory path for JDBC driver jars
  -enterPassword          enter the password via console
  -header <arg>           column names as header row (default yes)
- -help                   prints this help description
+ -help                   prints help description
  -output <arg>           path to output file
  -password <arg>         password for login
  -propertyFile <arg>     path to property file
  -query <arg>            sql query to be executed
+ -quotechar <arg>        char used for escaping values, by default a double quote
  -quotes <arg>           apply quotes (default yes)
+ -seperator <arg>        char for the field separation, by default a comma
  -sql <arg>              sql query to be executed
  -trim <arg>             trim values (default false
- -url <arg>              JDBC URL to be used (mandatory)
+ -url <arg>              JDBC URL to be used
  -user <arg>             user name for login
 
 ```
@@ -94,8 +101,11 @@ Yes you can! Simple pass the property `-quotes no`
 ### Can the values be trimmed?
 Yes you can! Simple pass the property `-trim yes`
 
-### Can I specify another delimiter?
-No this feature has not been foreseen, comma is currently hardcoded
+### Can I specify another delimiter for the field seperation and its value escaping?
+Yes you can! Simple pass the property `-seperator ";"` and `-quotechar "'"`. See example 3 for a reference.
+
+### Can I use another line end seperator?
+Yes you can, however for this you need to modify the generated shell script and add the proper system property of Java `-Dline.seperator=\n`
 
 ### Can I use that to dump large tables with over 100'000 entries or even more?
 Yes you can!  I programmed it exactyl for such a purpose. The tool is using streams and iterates through the resultset and does not store them in the memory. So memory consumption is quite small.
@@ -107,7 +117,7 @@ Yes You can! The property file has the lowest priority. The lookup for the porpe
 3. system properties (highest priority)
 
 ### Can I execute multiple queries and save them as separate output?
-Yes you can, see example 3
+Yes you can, see example 4
 
 ### Can I execute multiple queries and save them as single output appended?
 Well for this you need to use union queries and build the query as single line

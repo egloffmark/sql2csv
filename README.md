@@ -1,9 +1,6 @@
 # sql2cvs
 Java Tool to dump the result of SQL queries to CSV. It can be used also for large queries with millions of result rows. 
 
-## Known Issues & Workaround
-The parameter `-query` can not be used in linux because there is an issue passign command line parameters with spaces to JVM. This is issue does not appear on Windows systems. Workaround is to use the option with `-propertyFile` to pass over the sql query.
-
 ## Examples
 This tool can be used via command line as follows:
 
@@ -11,7 +8,7 @@ This tool can be used via command line as follows:
 
 Remark: As a prerequisite please make sure that your JDBC driver jar has been copied to the current working directory
 ```
-sql2csv  -url jdbc:mysql://localhost:3306/currencies -user root -password xxx -query "select * from currency" -output currencies.csv
+sql2csv -url jdbc:mysql://localhost:3306/currencies -user root -password xxx -query "select * from currency" -output currencies.csv
 ```
 This would produce for example the following output
 ```
